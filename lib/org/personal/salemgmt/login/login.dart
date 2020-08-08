@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:sales_mgmt/org/personal/salemgmt/domain/sales_ui.dart';
+import 'package:sales_mgmt/org/personal/salemgmt/utils/ui_utils.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -6,8 +8,10 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  TextEditingController userNameController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
+  TextEditingController _userNameController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+
+  final globalKey = GlobalKey<ScaffoldState>();
 
   Container salesManagementContainer() {
     return Container(
@@ -35,7 +39,7 @@ class _LoginState extends State<Login> {
     return Container(
       padding: EdgeInsets.all(10),
       child: TextField(
-          controller: userNameController,
+          controller: _userNameController,
           decoration: InputDecoration(
               border: OutlineInputBorder(), labelText: 'User Name')),
     );
@@ -45,7 +49,7 @@ class _LoginState extends State<Login> {
     return Container(
         padding: EdgeInsets.all(10),
         child: TextField(
-            controller: passwordController,
+            controller: _passwordController,
             obscureText: true,
             decoration: InputDecoration(
                 border: OutlineInputBorder(), labelText: 'Password')));
@@ -60,7 +64,7 @@ class _LoginState extends State<Login> {
         child: Text('Forgot Password'));
   }
 
-  Container loginContainer() {
+  Container loginContainer(BuildContext context) {
     return Container(
         padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
         child: RaisedButton(
@@ -68,8 +72,14 @@ class _LoginState extends State<Login> {
             color: Colors.blue,
             child: Text('Login'),
             onPressed: () {
-              print(userNameController.text);
-              print(passwordController.text);
+              if (_userNameController.text.trim() == 'admin' &&
+                  _passwordController.text.trim() == 'admin') {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => SaleUi()));
+              } else {
+                UiUtils.showSnackBar(
+                    globalKey, 'Invalid Credentials', Colors.red);
+              }
             }));
   }
 
@@ -92,6 +102,7 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: globalKey,
       appBar: AppBar(
           title: Text('Sales Management',
               style: Theme.of(context).primaryTextTheme.headline6)),
@@ -104,7 +115,7 @@ class _LoginState extends State<Login> {
             userNameContainer(),
             passwordContainer(),
             forgotPassword(),
-            loginContainer(),
+            loginContainer(context),
             signInForgotPasswordContainer()
           ],
         ),
