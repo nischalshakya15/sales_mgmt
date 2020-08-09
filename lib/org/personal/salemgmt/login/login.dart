@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sales_mgmt/org/personal/salemgmt/domain/auth/authentication_dao.dart';
 import 'package:sales_mgmt/org/personal/salemgmt/domain/auth/model/authentication_request.dart';
+import 'package:sales_mgmt/org/personal/salemgmt/utils/ui_utils.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -79,9 +80,10 @@ class _LoginState extends State<Login> {
                     AuthenticationRequest(
                         userName: _userNameController.text.trim(),
                         password: _passwordController.text.trim()));
-                print(response.refreshToken);
+                print(response);
               } catch (error) {
-                print(error);
+                UiUtils.showSnackBar(
+                    globalKey, error.response.data['message'], Colors.red);
               }
             }));
   }
