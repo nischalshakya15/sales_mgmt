@@ -85,6 +85,11 @@ class Login extends StatelessWidget {
                       key: 'refreshToken',
                       value: authenticationResponse.refreshToken);
 
+                  final authorizeResponse = await authenticationDao
+                      .authorize(authenticationResponse.accessToken);
+
+                  print(authorizeResponse.toString());
+
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => SaleUI()));
                 }
