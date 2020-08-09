@@ -20,3 +20,6 @@ samples, guidance on mobile development, and a full API reference.
 
 * Missing *.g.dart 
 https://github.com/dart-lang/build/issues/1990
+
+* JWT authentication 
+https://github.com/carzacc/jwt-tutorial-flutter/blob/master/lib/main.dart

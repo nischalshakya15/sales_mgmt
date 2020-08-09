@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sales_mgmt/org/personal/salemgmt/domain/auth/authentication_dao.dart';
 import 'package:sales_mgmt/org/personal/salemgmt/domain/auth/model/authentication_request.dart';
-import 'package:sales_mgmt/org/personal/salemgmt/domain/sales_ui.dart';
+import 'package:sales_mgmt/org/personal/salemgmt/domain/sales/sales_ui.dart';
 import 'package:sales_mgmt/org/personal/salemgmt/utils/ui_utils.dart';
 
 class Login extends StatelessWidget {
@@ -10,7 +10,7 @@ class Login extends StatelessWidget {
 
   final globalKey = GlobalKey<ScaffoldState>();
 
-  final AuthenticationDao authenticationDao = AuthenticationDao();
+  final AuthenticationService authenticationService = AuthenticationService();
 
   Container salesManagementContainer() {
     return Container(
@@ -73,11 +73,11 @@ class Login extends StatelessWidget {
             onPressed: () async {
               try {
                 final authenticationResponse =
-                    await authenticationDao.authenticate(AuthenticationRequest(
+                    await authenticationService.authenticate(AuthenticationRequest(
                         userName: _userNameController.text.trim(),
                         password: _passwordController.text.trim()));
                 if (authenticationResponse != null) {
-                  final user = await authenticationDao
+                  final user = await authenticationService
                       .authorize(authenticationResponse.accessToken);
                   if (user != null) {
                     Navigator.push(context,
