@@ -1,17 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:sales_mgmt/main.dart';
 import 'package:sales_mgmt/org/personal/salemgmt/domain/auth/authentication_dao.dart';
 import 'package:sales_mgmt/org/personal/salemgmt/domain/auth/model/authentication_request.dart';
 import 'package:sales_mgmt/org/personal/salemgmt/domain/sales_ui.dart';
 import 'package:sales_mgmt/org/personal/salemgmt/utils/ui_utils.dart';
 
-class Login extends StatefulWidget {
-  @override
-  _LoginState createState() => _LoginState();
-}
-
-class _LoginState extends State<Login> {
-  TextEditingController _userNameController = TextEditingController();
-  TextEditingController _passwordController = TextEditingController();
+class Login extends StatelessWidget {
+  final TextEditingController _userNameController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
 
   final globalKey = GlobalKey<ScaffoldState>();
 
@@ -77,12 +73,23 @@ class _LoginState extends State<Login> {
             child: Text('Login'),
             onPressed: () async {
               try {
-                final response = await authenticationDao.authenticate(
-                    AuthenticationRequest(
+                final authenticationResponse =
+                    await authenticationDao.authenticate(AuthenticationRequest(
                         userName: _userNameController.text.trim(),
                         password: _passwordController.text.trim()));
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => SaleUi()));
+                if (authenticationResponse != null) {
+                  storage.write(
+                      key: 'accessToken',
+                      value: authenticationResponse.accessToken);
+                  storage.write(
+                      key: 'refreshToken',
+                      value: authenticationResponse.refreshToken);
+
+                  storage.write(key: 'something', value: 'something');
+
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => SaleUI()));
+                }
               } catch (error) {
                 UiUtils.showSnackBar(
                     globalKey, error.response.data['message'], Colors.red);

@@ -3,11 +3,10 @@ import 'package:sales_mgmt/org/personal/salemgmt/domain/auth/model/authenticatio
 import 'package:sales_mgmt/org/personal/salemgmt/domain/auth/model/authentication_response.dart';
 
 class AuthService {
-
   final AuthenticationDao authenticationDao = AuthenticationDao();
 
   Future<AuthenticationResponse> authenticate(
-      AuthenticationRequest authenticationRequest) {
-    return authenticationDao.authenticate(authenticationRequest);
+      AuthenticationRequest authenticationRequest) async {
+    return await authenticationDao.authenticate(authenticationRequest);
   }
 }
