@@ -13,15 +13,14 @@ class AuthenticationDao {
     final response = await _dio.post(
         'https://spring-authentication-module.herokuapp.com/api/auth/authenticate',
         data: json.encode(authenticationRequest));
-    Map<String, dynamic> authenticationResponse = response.data;
-    return AuthenticationResponse.fromJson(authenticationResponse);
+    return AuthenticationResponse.fromJson(response.data);
   }
 
   Future<User> authorize(String accessToken) async {
     _dio.options.headers['Authorization'] = accessToken;
     final response = await _dio.post(
         'https://spring-authentication-module.herokuapp.com/api/auth/authorize');
-    Map<String, dynamic> user = response.data;
-    return User.fromJson(user);
+    User user = User.fromJson(response.data);
+    return user;
   }
 }

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sales_mgmt/main.dart';
 import 'package:sales_mgmt/org/personal/salemgmt/domain/auth/authentication_dao.dart';
 import 'package:sales_mgmt/org/personal/salemgmt/domain/auth/model/authentication_request.dart';
 import 'package:sales_mgmt/org/personal/salemgmt/domain/sales_ui.dart';
@@ -78,20 +77,12 @@ class Login extends StatelessWidget {
                         userName: _userNameController.text.trim(),
                         password: _passwordController.text.trim()));
                 if (authenticationResponse != null) {
-                  storage.write(
-                      key: 'accessToken',
-                      value: authenticationResponse.accessToken);
-                  storage.write(
-                      key: 'refreshToken',
-                      value: authenticationResponse.refreshToken);
-
-                  final authorizeResponse = await authenticationDao
+                  final user = await authenticationDao
                       .authorize(authenticationResponse.accessToken);
-
-                  print(authorizeResponse.toString());
-
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => SaleUI()));
+                  if (user != null) {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => SaleUI()));
+                  }
                 }
               } catch (error) {
                 UiUtils.showSnackBar(
