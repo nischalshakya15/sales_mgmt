@@ -1,34 +1,39 @@
 import 'package:flutter/material.dart';
-import 'package:sales_mgmt/main.dart';
+import 'package:sales_mgmt/org/personal/salemgmt/domain/sales/model/sales.dart';
 import 'package:sales_mgmt/org/personal/salemgmt/domain/sales/sales_dao.dart';
+import 'package:sales_mgmt/org/personal/salemgmt/utils/ui_utils.dart';
 
 class SaleUI extends StatefulWidget {
   _SaleUiState createState() => _SaleUiState();
 }
 
 class _SaleUiState extends State<SaleUI> {
-  String accessToken;
+  String accessToken = 'Something';
 
   final SalesDao salesDao = SalesDao();
+  final globalKey = GlobalKey<ScaffoldState>();
+  List<Sales> sales = List();
 
-  Future<String> getAccessToken() async {
-    this.accessToken = await storage.read(key: 'accessToken');
+  Future<void> findAll() async {
     try {
       final response = await salesDao.findAll();
-      print(response.toString());
+      setState(() {
+        this.sales = response;
+      });
     } catch (error) {
-      print(error);
+      UiUtils.showSnackBar(
+          globalKey, error.response.data['message'], Colors.red);
     }
-    return this.accessToken;
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        key: globalKey,
         appBar: AppBar(title: Text('SalesManagement')),
         body: Center(
             child: FutureBuilder(
-          future: getAccessToken(),
+          future: findAll(),
           builder: (context, snapshot) => snapshot.hasData
               ? Text("$accessToken")
               : snapshot.hasError
