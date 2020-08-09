@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:sales_mgmt/org/personal/salemgmt/domain/sales_ui.dart';
-import 'package:sales_mgmt/org/personal/salemgmt/utils/ui_utils.dart';
+import 'package:sales_mgmt/org/personal/salemgmt/domain/auth/authentication_dao.dart';
+import 'package:sales_mgmt/org/personal/salemgmt/domain/auth/model/authentication_request.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -12,6 +12,8 @@ class _LoginState extends State<Login> {
   TextEditingController _passwordController = TextEditingController();
 
   final globalKey = GlobalKey<ScaffoldState>();
+
+  final AuthenticationDao authenticationDao = AuthenticationDao();
 
   Container salesManagementContainer() {
     return Container(
@@ -71,14 +73,15 @@ class _LoginState extends State<Login> {
             textColor: Colors.white,
             color: Colors.blue,
             child: Text('Login'),
-            onPressed: () {
-              if (_userNameController.text.trim() == 'admin' &&
-                  _passwordController.text.trim() == 'admin') {
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => SaleUi()));
-              } else {
-                UiUtils.showSnackBar(
-                    globalKey, 'Invalid Credentials', Colors.red);
+            onPressed: () async {
+              try {
+                final response = await authenticationDao.authenticate(
+                    AuthenticationRequest(
+                        userName: _userNameController.text.trim(),
+                        password: _passwordController.text.trim()));
+                print(response.refreshToken);
+              } catch (error) {
+                print(error);
               }
             }));
   }
