@@ -85,8 +85,6 @@ class Login extends StatelessWidget {
                       key: 'refreshToken',
                       value: authenticationResponse.refreshToken);
 
-                  storage.write(key: 'something', value: 'something');
-
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => SaleUI()));
                 }

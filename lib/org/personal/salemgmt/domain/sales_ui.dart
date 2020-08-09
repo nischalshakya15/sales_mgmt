@@ -7,25 +7,24 @@ class SaleUI extends StatefulWidget {
 
 class _SaleUiState extends State<SaleUI> {
   String accessToken;
-  String something;
 
-  getAccessToken() async {
-    accessToken = await storage.read(key: 'accessToken');
-    something = await storage.read(key: 'something');
+  Future<String> getAccessToken() async {
+    this.accessToken = await storage.read(key: 'accessToken');
+    return this.accessToken;
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('SalesManagement')),
-      body: Center(
-          child: FutureBuilder(
-              future: getAccessToken(),
-              builder: (context, snapshot) => snapshot.hasData
-                  ? Text("$something")
-                  : snapshot.hasError
-                      ? Text("An error occurred")
-                      : CircularProgressIndicator())),
-    );
+        appBar: AppBar(title: Text('SalesManagement')),
+        body: Center(
+            child: FutureBuilder(
+          future: getAccessToken(),
+          builder: (context, snapshot) => snapshot.hasData
+              ? Text("$accessToken")
+              : snapshot.hasError
+                  ? Text("An error occurred")
+                  : CircularProgressIndicator(),
+        )));
   }
 }
