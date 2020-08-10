@@ -36,7 +36,7 @@ class _SaleUiState extends State<SaleUI> {
           builder: (context, snapshot) => snapshot.hasData
               ? Text("Authentication successful")
               : snapshot.hasError
-                  ? Text("An error occurred")
+                  ? Text("Something")
                   : CircularProgressIndicator(),
         )));
   }

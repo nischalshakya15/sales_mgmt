@@ -12,15 +12,20 @@ class AuthService {
     AuthenticationResponse authenticationResponse =
         await authenticationDao.authenticate(authenticationRequest);
 
-    storage.write(
-        key: 'accessToken', value: authenticationResponse.accessToken);
-    storage.write(
-        key: 'refreshToken', value: authenticationResponse.refreshToken);
+    await setAccessTokenAndRefreshToken(authenticationResponse);
 
     return authenticationResponse;
   }
 
   Future<User> authorize(String accessToken) async {
     return await authenticationDao.authorize(accessToken);
+  }
+
+  Future<void> setAccessTokenAndRefreshToken(
+      AuthenticationResponse authenticationResponse) async {
+    await storage.write(
+        key: 'accessToken', value: authenticationResponse.accessToken);
+    await storage.write(
+        key: 'refreshToken', value: authenticationResponse.refreshToken);
   }
 }
