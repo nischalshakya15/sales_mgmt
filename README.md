@@ -23,3 +23,7 @@ https://github.com/dart-lang/build/issues/1990
 
 * JWT authentication 
 https://github.com/carzacc/jwt-tutorial-flutter/blob/master/lib/main.dart
+https://carmine.dev/posts/flutterwebjwt/
+
+* Defining interceptor using Dio Package 
+https://medium.com/flutter-community/dio-interceptors-in-flutter-17be4214f363

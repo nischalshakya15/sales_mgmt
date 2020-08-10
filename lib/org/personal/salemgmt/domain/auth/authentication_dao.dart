@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:dio/dio.dart';
 import 'package:sales_mgmt/main.dart';
 import 'package:sales_mgmt/org/personal/salemgmt/domain/auth/model/authentication_request.dart';
 import 'package:sales_mgmt/org/personal/salemgmt/domain/auth/model/authentication_response.dart';
@@ -9,6 +10,7 @@ class AuthenticationService {
   Future<AuthenticationResponse> authenticate(
       AuthenticationRequest authenticationRequest) async {
     final response = await authenticationDio.post('/auth/authenticate',
+        options: Options(headers: {"requireToken": false}),
         data: json.encode(authenticationRequest));
     return AuthenticationResponse.fromJson(response.data);
   }

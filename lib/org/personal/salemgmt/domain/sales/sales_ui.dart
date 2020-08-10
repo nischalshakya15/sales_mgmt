@@ -8,7 +8,6 @@ class SaleUI extends StatefulWidget {
 }
 
 class _SaleUiState extends State<SaleUI> {
-  String accessToken = 'Something';
 
   final SalesDao salesDao = SalesDao();
   final globalKey = GlobalKey<ScaffoldState>();
@@ -35,7 +34,7 @@ class _SaleUiState extends State<SaleUI> {
             child: FutureBuilder(
           future: findAll(),
           builder: (context, snapshot) => snapshot.hasData
-              ? Text("$accessToken")
+              ? Text("Authentication successful")
               : snapshot.hasError
                   ? Text("An error occurred")
                   : CircularProgressIndicator(),

@@ -5,7 +5,7 @@ class UiUtils {
     final snackBar = SnackBar(
         content: Text(message),
         backgroundColor: color,
-        duration: Duration(seconds: 1));
+        duration: Duration(seconds: 30));
     globalKey.currentState.showSnackBar(snackBar);
   }
 }
