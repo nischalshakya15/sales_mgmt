@@ -36,18 +36,24 @@ class _SaleUiState extends State<SaleUI> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        key: globalKey,
-        appBar: AppBar(title: Text('SalesManagement')),
-        body: Container(
-            child: FutureBuilder(
-                future: _findAll(),
-                builder: (context, snapshot) {
-                  if (snapshot.data == null) {
-                    return Container(
-                        child: Center(child: CircularProgressIndicator()));
-                  } else {
-                    return _buildSaleListView(snapshot);
-                  }
-                })));
+      key: globalKey,
+      appBar: AppBar(title: Text('SalesManagement')),
+      body: Container(
+          child: FutureBuilder(
+              future: _findAll(),
+              builder: (context, snapshot) {
+                if (snapshot.data == null) {
+                  return Container(
+                      child: Center(child: CircularProgressIndicator()));
+                } else {
+                  return _buildSaleListView(snapshot);
+                }
+              })),
+      floatingActionButton: FloatingActionButton(
+          onPressed: () {},
+          child: Icon(Icons.add),
+          backgroundColor: Colors.lightBlue),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+    );
   }
 }

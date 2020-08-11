@@ -10,19 +10,36 @@ class SalesItems extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-        onTap: () {
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => SalesItemsDetails(sale: sale)));
-        },
-        leading: CircleAvatar(
-          foregroundColor: Colors.white,
-          backgroundColor: Theme.of(context).primaryColor,
-          child: Text(sale.goodsId[0]),
-        ),
-        title: Text(sale.goodsId),
-        subtitle: Text(sale.description));
+    return Card(
+        margin: EdgeInsets.fromLTRB(10, 5, 10, 0),
+        child: ListTile(
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => SalesItemsDetails(sale: sale)));
+            },
+            leading: CircleAvatar(
+              foregroundColor: Colors.white,
+              backgroundColor: Theme.of(context).primaryColor,
+              child: Text(sale.goodsId[0]),
+            ),
+            title: Text(sale.goodsId),
+            subtitle: Text(sale.description),
+            trailing: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                IconButton(
+                  icon: Icon(Icons.edit),
+                  color: Colors.blueAccent,
+                  onPressed: () {},
+                ),
+                IconButton(
+                  icon: Icon(Icons.delete),
+                  color: Colors.redAccent,
+                  onPressed: () {},
+                )
+              ],
+            )));
   }
 }
