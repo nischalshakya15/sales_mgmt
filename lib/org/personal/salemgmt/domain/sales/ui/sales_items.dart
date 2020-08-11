@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:sales_mgmt/org/personal/salemgmt/domain/sales/sales_items_details.dart';
+import 'package:sales_mgmt/org/personal/salemgmt/domain/sales/ui/sales_items_details.dart';
 
-import 'model/sales.dart';
+import '../model/sales.dart';
 
 class SalesItems extends StatelessWidget {
   final Sales sale;
@@ -13,7 +13,9 @@ class SalesItems extends StatelessWidget {
     return ListTile(
         onTap: () {
           Navigator.push(
-              context, MaterialPageRoute(builder: (context) => SalesItemsDetails(sale: sale)));
+              context,
+              MaterialPageRoute(
+                  builder: (context) => SalesItemsDetails(sale: sale)));
         },
         leading: CircleAvatar(
           foregroundColor: Colors.white,

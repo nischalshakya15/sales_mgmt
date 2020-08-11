@@ -30,3 +30,6 @@ https://medium.com/flutter-community/dio-interceptors-in-flutter-17be4214f363
 
 * Using FutureBuilder on widget
 https://medium.com/nonstopio/flutter-future-builder-with-list-view-builder-d7212314e8c9
+
+* Complete guide to the ListTile
+https://medium.com/@suragch/a-complete-guide-to-flutters-listtile-597a20a3d449

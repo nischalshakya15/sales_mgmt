@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sales_mgmt/org/personal/salemgmt/domain/sales/model/sales.dart';
 import 'package:sales_mgmt/org/personal/salemgmt/domain/sales/sales_dao.dart';
-import 'package:sales_mgmt/org/personal/salemgmt/domain/sales/sales_items.dart';
+import 'package:sales_mgmt/org/personal/salemgmt/domain/sales/ui/sales_items.dart';
 import 'package:sales_mgmt/org/personal/salemgmt/utils/ui_utils.dart';
 
 class SaleUI extends StatefulWidget {
