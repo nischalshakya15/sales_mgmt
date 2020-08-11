@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sales_mgmt/org/personal/salemgmt/domain/sales/model/sales.dart';
 import 'package:sales_mgmt/org/personal/salemgmt/domain/sales/sales_dao.dart';
+import 'package:sales_mgmt/org/personal/salemgmt/domain/sales/sales_items.dart';
 import 'package:sales_mgmt/org/personal/salemgmt/utils/ui_utils.dart';
 
 class SaleUI extends StatefulWidget {
@@ -8,22 +9,28 @@ class SaleUI extends StatefulWidget {
 }
 
 class _SaleUiState extends State<SaleUI> {
-
   final SalesDao salesDao = SalesDao();
   final globalKey = GlobalKey<ScaffoldState>();
+
   List<Sales> sales = List();
 
-  Future<void> findAll() async {
+  Future<List<Sales>> _findAll() async {
     try {
-      final response = await salesDao.findAll();
-      setState(() {
-        this.sales = response;
-      });
-      print(this.sales);
+      this.sales = await salesDao.findAll();
     } catch (error) {
       UiUtils.showSnackBar(
           globalKey, error.response.data['message'], Colors.red);
     }
+    return sales;
+  }
+
+  ListView _buildSaleListView(AsyncSnapshot snapshot) {
+    return ListView.builder(
+        itemCount: snapshot.data.length,
+        itemBuilder: (context, index) {
+          Sales sale = snapshot.data[index];
+          return SalesItems(sale: sale);
+        });
   }
 
   @override
@@ -31,14 +38,16 @@ class _SaleUiState extends State<SaleUI> {
     return Scaffold(
         key: globalKey,
         appBar: AppBar(title: Text('SalesManagement')),
-        body: Center(
+        body: Container(
             child: FutureBuilder(
-          future: findAll(),
-          builder: (context, snapshot) => snapshot.hasData
-              ? Text("Authentication successful")
-              : snapshot.hasError
-                  ? Text("Something")
-                  : CircularProgressIndicator(),
-        )));
+                future: _findAll(),
+                builder: (context, snapshot) {
+                  if (snapshot.data == null) {
+                    return Container(
+                        child: Center(child: CircularProgressIndicator()));
+                  } else {
+                    return _buildSaleListView(snapshot);
+                  }
+                })));
   }
 }

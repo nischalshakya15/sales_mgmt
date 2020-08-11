@@ -27,3 +27,6 @@ https://carmine.dev/posts/flutterwebjwt/
 
 * Defining interceptor using Dio Package 
 https://medium.com/flutter-community/dio-interceptors-in-flutter-17be4214f363
+
+* Using FutureBuilder on widget
+https://medium.com/nonstopio/flutter-future-builder-with-list-view-builder-d7212314e8c9
