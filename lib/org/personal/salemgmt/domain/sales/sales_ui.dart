@@ -19,6 +19,7 @@ class _SaleUiState extends State<SaleUI> {
       setState(() {
         this.sales = response;
       });
+      print(this.sales);
     } catch (error) {
       UiUtils.showSnackBar(
           globalKey, error.response.data['message'], Colors.red);
