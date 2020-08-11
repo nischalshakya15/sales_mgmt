@@ -33,3 +33,6 @@ https://medium.com/nonstopio/flutter-future-builder-with-list-view-builder-d7212
 
 * Complete guide to the ListTile
 https://medium.com/@suragch/a-complete-guide-to-flutters-listtile-597a20a3d449
+
+* Flutter form with validation 
+https://codingwithjoe.com/building-forms-with-flutter/

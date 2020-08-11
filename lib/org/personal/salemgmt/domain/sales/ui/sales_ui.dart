@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sales_mgmt/org/personal/salemgmt/domain/sales/model/sales.dart';
 import 'package:sales_mgmt/org/personal/salemgmt/domain/sales/sales_dao.dart';
+import 'package:sales_mgmt/org/personal/salemgmt/domain/sales/ui/sales_form.dart';
 import 'package:sales_mgmt/org/personal/salemgmt/domain/sales/ui/sales_items.dart';
 import 'package:sales_mgmt/org/personal/salemgmt/utils/ui_utils.dart';
 
@@ -50,7 +51,10 @@ class _SaleUiState extends State<SaleUI> {
                 }
               })),
       floatingActionButton: FloatingActionButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => SalesForm(sale: Sales())));
+          },
           child: Icon(Icons.add),
           backgroundColor: Colors.lightBlue),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
