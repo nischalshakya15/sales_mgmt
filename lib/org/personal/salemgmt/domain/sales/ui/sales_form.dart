@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:sales_mgmt/org/personal/salemgmt/domain/sales/model/sales.dart';
+import 'package:sales_mgmt/org/personal/salemgmt/domain/sales/sales_dao.dart';
 import 'package:sales_mgmt/org/personal/salemgmt/utils/ui_utils.dart';
 
 class SalesForm extends StatefulWidget {
@@ -17,15 +18,23 @@ class _SalesForm extends State<SalesForm> {
 
   final globalKey = GlobalKey<ScaffoldState>();
 
-  void _submitForm() {
+  final SalesDao salesDao = SalesDao();
+
+  void _submitForm() async{
     final FormState form = _salesForm.currentState;
 
     if (!form.validate()) {
       UiUtils.showSnackBar(globalKey, "Form is not valid", Colors.redAccent);
     } else {
       form.save();
+      await _save(widget.sale);
       print('Goods id ${widget.sale.toString()}');
     }
+  }
+
+  Future<void> _save(Sales sale) async {
+    final response = await salesDao.save(widget.sale);
+    print(response);
   }
 
   @override

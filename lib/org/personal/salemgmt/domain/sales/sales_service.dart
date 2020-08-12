@@ -8,4 +8,9 @@ class SalesService {
     final response = await salesDao.findAll();
     return response;
   }
+
+  Future<Sales> save(Sales sale) async {
+    final response = await salesDao.save(sale);
+    return response;
+  }
 }
