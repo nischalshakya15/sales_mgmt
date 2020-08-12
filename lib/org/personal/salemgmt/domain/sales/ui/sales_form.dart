@@ -14,6 +14,7 @@ class SalesForm extends StatefulWidget {
 
 class _SalesForm extends State<SalesForm> {
   final GlobalKey<FormState> _salesForm = GlobalKey<FormState>();
+
   final globalKey = GlobalKey<ScaffoldState>();
 
   void _submitForm() {
@@ -38,54 +39,75 @@ class _SalesForm extends State<SalesForm> {
         child: ListView(
           padding: EdgeInsets.fromLTRB(10, 10, 20, 20),
           children: <Widget>[
-            TextFormField(
-                decoration: InputDecoration(
-                    icon: Icon(Icons.vpn_key),
-                    hintText: "Enter goods Id",
-                    labelText: "Goods ID"),
-                validator: (val) => val.isEmpty ? 'Goods Id is required' : null,
-                onSaved: (val) => widget.sale.goodsId = val),
-            TextFormField(
-                decoration: InputDecoration(
-                    icon: Icon(Icons.description),
-                    hintText: "Enter description",
-                    labelText: "Goods Description"),
-                validator: (val) =>
-                    val.isEmpty ? 'Description is required' : null,
-                onSaved: (val) => widget.sale.description = val),
-            TextFormField(
-                decoration: InputDecoration(
-                    icon: Icon(Icons.attach_money),
-                    hintText: "Enter price per unit",
-                    labelText: "Price per unit"),
-                validator: (val) =>
-                    val.isEmpty ? 'Price per unit is required' : null,
-                onSaved: (val) => widget.sale.pricePerUnit = double.parse(val)),
-            TextFormField(
-                decoration: InputDecoration(
-                    icon: Icon(Icons.local_grocery_store),
-                    hintText: "Enter quantity",
-                    labelText: "Quantity"),
-                validator: (val) => val.isEmpty ? 'Quantity is required' : null,
-                onSaved: (val) => widget.sale.quantity = int.parse(val)),
-            TextFormField(
-                decoration: InputDecoration(
-                    icon: Icon(Icons.tab),
-                    hintText: "Total",
-                    labelText: "Total"),
-                onSaved: (val) => widget.sale.totalSales = double.parse(val)),
-            Container(
-                padding: EdgeInsets.only(left: 10.0, top: 20.0),
-                child: FlatButton(
-                  color: Colors.blueAccent,
-                  padding: EdgeInsets.all(8.0),
-                  textColor: Colors.white,
-                  child: Text('Submit'),
-                  onPressed: _submitForm,
-                ))
+            goodsIdTextFormField(),
+            goodsDescriptionTextFormField(),
+            pricePerUnitTextFormField(),
+            quantityTextFormField(),
+            totalSalesTextFormField(),
+            submitFlatButton()
           ],
         ),
       ),
     );
+  }
+
+  Container submitFlatButton() {
+    return Container(
+        padding: EdgeInsets.only(left: 10.0, top: 20.0),
+        child: FlatButton(
+          color: Colors.blueAccent,
+          padding: EdgeInsets.all(8.0),
+          textColor: Colors.white,
+          child: Text('Submit'),
+          onPressed: _submitForm,
+        ));
+  }
+
+  TextFormField totalSalesTextFormField() {
+    return TextFormField(
+        decoration: InputDecoration(
+            icon: Icon(Icons.tab), hintText: "Total", labelText: "Total"),
+        validator: (val) => val.isEmpty ? 'Total is required' : null,
+        onSaved: (val) => widget.sale.totalSales = double.parse(val));
+  }
+
+  TextFormField quantityTextFormField() {
+    return TextFormField(
+        decoration: InputDecoration(
+            icon: Icon(Icons.local_grocery_store),
+            hintText: "Enter quantity",
+            labelText: "Quantity"),
+        validator: (val) => val.isEmpty ? 'Quantity is required' : null,
+        onSaved: (val) => widget.sale.quantity = int.parse(val));
+  }
+
+  TextFormField pricePerUnitTextFormField() {
+    return TextFormField(
+        decoration: InputDecoration(
+            icon: Icon(Icons.attach_money),
+            hintText: "Enter price per unit",
+            labelText: "Price per unit"),
+        validator: (val) => val.isEmpty ? 'Price per unit is required' : null,
+        onSaved: (val) => widget.sale.pricePerUnit = double.parse(val));
+  }
+
+  TextFormField goodsDescriptionTextFormField() {
+    return TextFormField(
+        decoration: InputDecoration(
+            icon: Icon(Icons.description),
+            hintText: "Enter description",
+            labelText: "Goods Description"),
+        validator: (val) => val.isEmpty ? 'Description is required' : null,
+        onSaved: (val) => widget.sale.description = val);
+  }
+
+  TextFormField goodsIdTextFormField() {
+    return TextFormField(
+        decoration: InputDecoration(
+            icon: Icon(Icons.vpn_key),
+            hintText: "Enter goods Id",
+            labelText: "Goods ID"),
+        validator: (val) => val.isEmpty ? 'Goods Id is required' : null,
+        onSaved: (val) => widget.sale.goodsId = val);
   }
 }
