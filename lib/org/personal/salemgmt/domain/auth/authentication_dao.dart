@@ -6,7 +6,8 @@ import 'package:sales_mgmt/org/personal/salemgmt/domain/auth/model/authenticatio
 import 'package:sales_mgmt/org/personal/salemgmt/domain/auth/model/authentication_response.dart';
 import 'package:sales_mgmt/org/personal/salemgmt/domain/auth/model/user.dart';
 
-class AuthenticationService {
+class AuthenticationDao {
+
   Future<AuthenticationResponse> authenticate(
       AuthenticationRequest authenticationRequest) async {
     final response = await authenticationDio.post('/auth/authenticate',

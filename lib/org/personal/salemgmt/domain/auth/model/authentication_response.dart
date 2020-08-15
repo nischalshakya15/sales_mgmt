@@ -14,4 +14,9 @@ class AuthenticationResponse {
       _$AuthenticationResponseFromJson(authenticationRequest);
 
   Map<String, dynamic> toJson() => _$AuthenticationResponseToJson(this);
+
+  @override
+  String toString() {
+    return 'AuthenticationResponse{accessToken: $accessToken, refreshToken: $refreshToken}';
+  }
 }
