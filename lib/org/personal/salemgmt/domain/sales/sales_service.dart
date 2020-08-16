@@ -7,7 +7,7 @@ class SalesService extends ChangeNotifier {
 
   List<Sales> _sales = List();
 
-  List<Sales> get sales => _sales;
+  List<Sales> get getSales => _sales;
 
   Future<void> findAll() async {
     _sales = await salesDao.findAll();

@@ -5,16 +5,17 @@ import 'package:sales_mgmt/org/personal/salemgmt/domain/sales/ui/sales_list_item
 class SalesList extends StatelessWidget {
   final List<Sales> sales;
 
-  SalesList({@required this.sales});
+  final AsyncSnapshot snapshot;
+
+  SalesList({@required this.sales, @required this.snapshot});
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: getChildrenTasks(),
-    );
-  }
-
-  List<Widget> getChildrenTasks() {
-    return sales.map((sale) => SalesListItems(sale: sale)).toList();
+    return ListView.builder(
+        itemCount: snapshot.data.length,
+        itemBuilder: (context, index) {
+          Sales sale = snapshot.data[index];
+          return SalesListItems(sale: sale);
+        });
   }
 }
