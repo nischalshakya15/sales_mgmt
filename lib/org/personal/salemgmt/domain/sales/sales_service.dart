@@ -1,16 +1,21 @@
+import 'package:flutter/material.dart';
 import 'package:sales_mgmt/org/personal/salemgmt/domain/sales/model/sales.dart';
 import 'package:sales_mgmt/org/personal/salemgmt/domain/sales/sales_dao.dart';
 
-class SalesService {
+class SalesService extends ChangeNotifier {
   final SalesDao salesDao = SalesDao();
 
-  Future<List<Sales>> findAll() async {
-    final response = await salesDao.findAll();
-    return response;
+  List<Sales> _sales = List();
+
+  List<Sales> get sales => _sales;
+
+  Future<void> findAll() async {
+    _sales = await salesDao.findAll();
+    notifyListeners();
   }
 
-  Future<Sales> save(Sales sale) async {
-    final response = await salesDao.save(sale);
-    return response;
+  Future<void> save(Sales sale) async {
+    await salesDao.save(sale);
+    findAll();
   }
 }

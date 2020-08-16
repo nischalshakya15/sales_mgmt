@@ -3,10 +3,10 @@ import 'package:sales_mgmt/org/personal/salemgmt/domain/sales/ui/sales_items_det
 
 import '../model/sales.dart';
 
-class SalesItems extends StatelessWidget {
+class SalesListItems extends StatelessWidget {
   final Sales sale;
 
-  SalesItems({this.sale});
+  SalesListItems({this.sale});
 
   @override
   Widget build(BuildContext context) {
