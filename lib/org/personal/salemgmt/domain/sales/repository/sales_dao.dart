@@ -21,4 +21,8 @@ class SalesDao {
         await authorizationDio.put('/sales/${sale.goodsId}', data: json.encode(sale));
     return Sales.fromJson(response.data);
   }
+
+  Future<void> remove(String goodsId) async {
+    await authorizationDio.delete("/sales/$goodsId");
+  }
 }

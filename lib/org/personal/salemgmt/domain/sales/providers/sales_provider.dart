@@ -22,7 +22,10 @@ class SalesProvider extends ChangeNotifier {
 
   Future<Sales> update(Sales sale) async {
     final response = await salesDao.update(sale);
-    print(response);
     return response;
+  }
+
+  Future<void> remove(String goodsId) async {
+    await salesDao.remove(goodsId);
   }
 }

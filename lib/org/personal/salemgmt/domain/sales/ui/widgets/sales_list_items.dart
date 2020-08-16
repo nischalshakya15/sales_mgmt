@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:sales_mgmt/org/personal/salemgmt/domain/sales/providers/sales_provider.dart';
 import 'package:sales_mgmt/org/personal/salemgmt/domain/sales/ui/screens/sales_form.dart';
 import 'package:sales_mgmt/org/personal/salemgmt/domain/sales/ui/screens/sales_items_details.dart';
 
@@ -37,13 +39,20 @@ class SalesListItems extends StatelessWidget {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => SalesForm(sale: sale, title: "Update ${sale.goodsId}", actionText: "Update",)));
+                            builder: (context) => SalesForm(
+                                  sale: sale,
+                                  title: "Update ${sale.goodsId}",
+                                  actionText: "Update",
+                                )));
                   },
                 ),
                 IconButton(
                   icon: Icon(Icons.delete),
                   color: Colors.redAccent,
-                  onPressed: () {},
+                  onPressed: () async {
+                    await Provider.of<SalesProvider>(context, listen: false)
+                        .remove(sale.goodsId);
+                  },
                 )
               ],
             )));
