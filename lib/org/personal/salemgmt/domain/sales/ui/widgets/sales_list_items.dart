@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sales_mgmt/org/personal/salemgmt/domain/sales/ui/screens/sales_form.dart';
 import 'package:sales_mgmt/org/personal/salemgmt/domain/sales/ui/screens/sales_items_details.dart';
 
 import '../../model/sales.dart';
@@ -32,7 +33,12 @@ class SalesListItems extends StatelessWidget {
                 IconButton(
                   icon: Icon(Icons.edit),
                   color: Colors.blueAccent,
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => SalesForm(sale: sale, title: "Update ${sale.goodsId}", actionText: "Update",)));
+                  },
                 ),
                 IconButton(
                   icon: Icon(Icons.delete),

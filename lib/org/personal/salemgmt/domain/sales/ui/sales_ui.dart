@@ -50,7 +50,7 @@ class _SaleUiState extends State<SaleUI> {
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => SalesForm(sale: Sales())));
+                    builder: (context) => SalesForm(sale: Sales(), title: "Create new Sales", actionText: "Save")));
           },
           child: Icon(Icons.add),
           backgroundColor: Colors.lightBlue),

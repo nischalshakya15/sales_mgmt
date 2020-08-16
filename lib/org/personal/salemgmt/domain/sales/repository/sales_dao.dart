@@ -15,4 +15,10 @@ class SalesDao {
         await authorizationDio.post('/sales', data: json.encode(sale));
     return Sales.fromJson(response.data);
   }
+
+  Future<Sales> update(Sales sale) async {
+    final response =
+        await authorizationDio.put('/sales/${sale.goodsId}', data: json.encode(sale));
+    return Sales.fromJson(response.data);
+  }
 }

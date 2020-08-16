@@ -15,8 +15,14 @@ class SalesProvider extends ChangeNotifier {
     return _sales;
   }
 
-  Future<void> save(Sales sale) async {
-    await salesDao.save(sale);
-    findAll();
+  Future<Sales> save(Sales sale) async {
+    final response = await salesDao.save(sale);
+    return response;
+  }
+
+  Future<Sales> update(Sales sale) async {
+    final response = await salesDao.update(sale);
+    print(response);
+    return response;
   }
 }
