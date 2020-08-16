@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sales_mgmt/org/personal/salemgmt/domain/sales/model/sales.dart';
-import 'package:sales_mgmt/org/personal/salemgmt/domain/sales/ui/sales_list_items.dart';
+import 'package:sales_mgmt/org/personal/salemgmt/domain/sales/ui/widgets/sales_list_items.dart';
 
 class SalesList extends StatelessWidget {
   final List<Sales> sales;
@@ -11,7 +11,6 @@ class SalesList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(this.sales);
     return ListView.builder(
         itemCount: snapshot.data.length,
         itemBuilder: (context, index) {

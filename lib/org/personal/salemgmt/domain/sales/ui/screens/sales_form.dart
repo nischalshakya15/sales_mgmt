@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:provider/provider.dart';
 import 'package:sales_mgmt/org/personal/salemgmt/domain/sales/model/sales.dart';
-import 'package:sales_mgmt/org/personal/salemgmt/domain/sales/sales_service.dart';
+import 'package:sales_mgmt/org/personal/salemgmt/domain/sales/providers/sales_provider.dart';
 import 'package:sales_mgmt/org/personal/salemgmt/domain/sales/ui/sales_ui.dart';
 import 'package:sales_mgmt/org/personal/salemgmt/utils/ui_utils.dart';
 
@@ -19,9 +20,9 @@ class _SalesForm extends State<SalesForm> {
 
   final globalKey = GlobalKey<ScaffoldState>();
 
-  final SalesService salesService = SalesService();
+  final SalesProvider salesService = SalesProvider();
 
-  void _submitForm() async{
+  void _submitForm() async {
     final FormState form = _salesForm.currentState;
 
     if (!form.validate()) {
@@ -30,13 +31,12 @@ class _SalesForm extends State<SalesForm> {
       form.save();
       await _save(widget.sale);
       print('Goods id ${widget.sale.toString()}');
-      Navigator.pop(context,
-          MaterialPageRoute(builder: (context) => SaleUI()));
+      Navigator.pop(context, MaterialPageRoute(builder: (context) => SaleUI()));
     }
   }
 
   Future<void> _save(Sales sale) async {
-    await salesService.save(widget.sale);
+    await Provider.of<SalesProvider>(context, listen: false).save(sale);
   }
 
   @override

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sales_mgmt/org/personal/salemgmt/domain/auth/authentication_service.dart';
 import 'package:sales_mgmt/org/personal/salemgmt/domain/auth/model/authentication_request.dart';
-import 'package:sales_mgmt/org/personal/salemgmt/domain/sales/ui/sales_ui.dart';
+import 'package:sales_mgmt/org/personal/salemgmt/domain/sales/sales_module.dart';
 import 'package:sales_mgmt/org/personal/salemgmt/utils/ui_utils.dart';
 
 class Login extends StatelessWidget {
@@ -82,7 +82,7 @@ class Login extends StatelessWidget {
 
                   if (user != null) {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => SaleUI()));
+                        MaterialPageRoute(builder: (context) => SalesModule()));
                   }
                 }
               } catch (error) {

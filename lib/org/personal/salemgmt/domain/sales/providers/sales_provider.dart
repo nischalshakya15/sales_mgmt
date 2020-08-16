@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:sales_mgmt/org/personal/salemgmt/domain/sales/model/sales.dart';
-import 'package:sales_mgmt/org/personal/salemgmt/domain/sales/sales_dao.dart';
+import 'package:sales_mgmt/org/personal/salemgmt/domain/sales/repository/sales_dao.dart';
 
-class SalesService extends ChangeNotifier {
+class SalesProvider extends ChangeNotifier {
   final SalesDao salesDao = SalesDao();
 
   List<Sales> _sales = List();
@@ -18,6 +18,5 @@ class SalesService extends ChangeNotifier {
   Future<void> save(Sales sale) async {
     await salesDao.save(sale);
     findAll();
-    notifyListeners();
   }
 }

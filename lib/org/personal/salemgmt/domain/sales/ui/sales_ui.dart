@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sales_mgmt/org/personal/salemgmt/domain/sales/model/sales.dart';
-import 'package:sales_mgmt/org/personal/salemgmt/domain/sales/sales_service.dart';
-import 'package:sales_mgmt/org/personal/salemgmt/domain/sales/ui/sales_form.dart';
-import 'package:sales_mgmt/org/personal/salemgmt/domain/sales/ui/sales_list.dart';
+import 'package:sales_mgmt/org/personal/salemgmt/domain/sales/providers/sales_provider.dart';
+import 'package:sales_mgmt/org/personal/salemgmt/domain/sales/ui/screens/sales_form.dart';
+import 'package:sales_mgmt/org/personal/salemgmt/domain/sales/ui/widgets/sales_list.dart';
 import 'package:sales_mgmt/org/personal/salemgmt/utils/ui_utils.dart';
 
 class SaleUI extends StatefulWidget {
@@ -14,15 +14,9 @@ class _SaleUiState extends State<SaleUI> {
   final globalKey = GlobalKey<ScaffoldState>();
   List<Sales> sales = List();
 
-  @override
-  void initState() {
-    super.initState();
-    _findAll();
-  }
-
   Future<List<Sales>> _findAll() async {
     try {
-      final sales = Provider.of<SalesService>(context, listen: false);
+      final sales = Provider.of<SalesProvider>(context, listen: true);
       this.sales = await sales.findAll();
     } catch (error) {
       UiUtils.showSnackBar(
@@ -45,7 +39,7 @@ class _SaleUiState extends State<SaleUI> {
                       child: Center(child: CircularProgressIndicator()));
                 } else {
                   return Container(
-                      child: Consumer<SalesService>(
+                      child: Consumer<SalesProvider>(
                     builder: (context, sales, child) =>
                         SalesList(sales: sales.getSales, snapshot: snapshot),
                   ));

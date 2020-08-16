@@ -1,8 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:provider/provider.dart';
-import 'package:sales_mgmt/org/personal/salemgmt/domain/sales/sales_service.dart';
 import 'package:sales_mgmt/org/personal/salemgmt/interceptors/app_interceptors.dart';
 import 'package:sales_mgmt/org/personal/salemgmt/login/login.dart';
 
@@ -20,7 +18,5 @@ final Dio authorizationDio = Dio(BaseOptions(
 
 void main() {
   authorizationDio.interceptors.add(AppInterceptors());
-  runApp(MultiProvider(
-      providers: [ChangeNotifierProvider.value(value: SalesService())],
-      child: MaterialApp(title: 'Sales Management', home: Login())));
+  runApp(MaterialApp(title: 'Sales Management', home: Login()));
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:sales_mgmt/org/personal/salemgmt/domain/sales/ui/sales_items_details.dart';
+import 'package:sales_mgmt/org/personal/salemgmt/domain/sales/ui/screens/sales_items_details.dart';
 
-import '../model/sales.dart';
+import '../../model/sales.dart';
 
 class SalesListItems extends StatelessWidget {
   final Sales sale;
