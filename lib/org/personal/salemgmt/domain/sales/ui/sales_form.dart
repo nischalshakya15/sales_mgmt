@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:sales_mgmt/org/personal/salemgmt/domain/sales/model/sales.dart';
 import 'package:sales_mgmt/org/personal/salemgmt/domain/sales/sales_dao.dart';
+import 'package:sales_mgmt/org/personal/salemgmt/domain/sales/ui/sales_ui.dart';
 import 'package:sales_mgmt/org/personal/salemgmt/utils/ui_utils.dart';
 
 class SalesForm extends StatefulWidget {
@@ -29,12 +30,13 @@ class _SalesForm extends State<SalesForm> {
       form.save();
       await _save(widget.sale);
       print('Goods id ${widget.sale.toString()}');
+      Navigator.pop(context,
+          MaterialPageRoute(builder: (context) => SaleUI()));
     }
   }
 
   Future<void> _save(Sales sale) async {
-    final response = await salesDao.save(widget.sale);
-    print(response);
+    await salesDao.save(widget.sale);
   }
 
   @override

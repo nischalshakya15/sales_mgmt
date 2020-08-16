@@ -13,6 +13,18 @@ class _SaleUiState extends State<SaleUI> {
   final globalKey = GlobalKey<ScaffoldState>();
 
   @override
+  void initState() {
+    super.initState();
+    Provider.of<SalesService>(context, listen: false).findAll();
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    Provider.of<SalesService>(context, listen: false).findAll();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: globalKey,

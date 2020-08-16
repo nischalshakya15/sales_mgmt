@@ -16,6 +16,6 @@ class SalesService extends ChangeNotifier {
 
   Future<void> save(Sales sale) async {
     await salesDao.save(sale);
-    findAll();
+    notifyListeners();
   }
 }
