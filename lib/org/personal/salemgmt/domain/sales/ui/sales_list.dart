@@ -11,6 +11,7 @@ class SalesList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(this.sales);
     return ListView.builder(
         itemCount: snapshot.data.length,
         itemBuilder: (context, index) {

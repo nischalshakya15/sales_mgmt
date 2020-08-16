@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:sales_mgmt/org/personal/salemgmt/domain/sales/model/sales.dart';
-import 'package:sales_mgmt/org/personal/salemgmt/domain/sales/sales_dao.dart';
+import 'package:sales_mgmt/org/personal/salemgmt/domain/sales/sales_service.dart';
 import 'package:sales_mgmt/org/personal/salemgmt/domain/sales/ui/sales_ui.dart';
 import 'package:sales_mgmt/org/personal/salemgmt/utils/ui_utils.dart';
 
@@ -19,7 +19,7 @@ class _SalesForm extends State<SalesForm> {
 
   final globalKey = GlobalKey<ScaffoldState>();
 
-  final SalesDao salesDao = SalesDao();
+  final SalesService salesService = SalesService();
 
   void _submitForm() async{
     final FormState form = _salesForm.currentState;
@@ -36,7 +36,7 @@ class _SalesForm extends State<SalesForm> {
   }
 
   Future<void> _save(Sales sale) async {
-    await salesDao.save(widget.sale);
+    await salesService.save(widget.sale);
   }
 
   @override

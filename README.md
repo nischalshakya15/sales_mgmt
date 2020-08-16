@@ -46,3 +46,7 @@ https://codingwithjoe.com/building-forms-with-flutter/
 * Run button disabled in android studio
 
 https://stackoverflow.com/questions/28385172/run-button-is-disabled-in-android-studio#:~:text=If%20you%20have%20changed%20jdk,in%20editbar%20in%20right%20bar.&text=If%20your%20IDE%20is%20in,make%20sure%20it%20is%20disabled.
+
+* Making sense of all those provider
+
+https://medium.com/flutter-community/making-sense-all-of-those-flutter-providers-e842e18f45dd

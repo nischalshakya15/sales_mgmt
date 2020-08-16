@@ -12,6 +12,7 @@ class SaleUI extends StatefulWidget {
 
 class _SaleUiState extends State<SaleUI> {
   final globalKey = GlobalKey<ScaffoldState>();
+  List<Sales> sales = List();
 
   @override
   void initState() {
@@ -19,13 +20,15 @@ class _SaleUiState extends State<SaleUI> {
     _findAll();
   }
 
-  Future<void> _findAll() async {
+  Future<List<Sales>> _findAll() async {
     try {
-      await Provider.of<SalesService>(context, listen: false).findAll();
+      final sales = Provider.of<SalesService>(context, listen: false);
+      this.sales = await sales.findAll();
     } catch (error) {
       UiUtils.showSnackBar(
           globalKey, error.response.data['message'], Colors.red);
     }
+    return this.sales;
   }
 
   @override
