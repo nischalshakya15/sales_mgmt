@@ -8,6 +8,6 @@ class SalesModule extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
         providers: [ChangeNotifierProvider.value(value: SalesProvider())],
-        child: MaterialApp(title: 'Sales Management', home: SaleUI()));
+        child: MaterialApp(title: 'Sales Management', debugShowCheckedModeBanner: false,home: SaleUI()));
   }
 }

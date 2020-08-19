@@ -18,5 +18,8 @@ final Dio authorizationDio = Dio(BaseOptions(
 
 void main() {
   authorizationDio.interceptors.add(AppInterceptors());
-  runApp(MaterialApp(title: 'Sales Management', home: Login()));
+  runApp(MaterialApp(
+      title: 'Sales Management',
+      debugShowCheckedModeBanner: false,
+      home: Login()));
 }
