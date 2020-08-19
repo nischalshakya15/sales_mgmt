@@ -1,7 +1,8 @@
 import 'dart:convert';
 
-import 'package:sales_mgmt/main.dart';
+
 import 'package:sales_mgmt/org/personal/salemgmt/domain/sales/model/sales.dart';
+import 'package:sales_mgmt/org/personal/salemgmt/utils/dio_utils.dart';
 
 class SalesDao {
   Future<List<Sales>> findAll() async {

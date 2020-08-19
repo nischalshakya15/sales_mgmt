@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:sales_mgmt/main.dart';
+import 'package:sales_mgmt/salesmgmt.dart';
 
 class AppInterceptors extends Interceptor {
   @override

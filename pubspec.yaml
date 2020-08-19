@@ -16,6 +16,7 @@ dependencies:
   dio: ^3.0.10
   flutter_secure_storage: ^3.3.3
   provider: ^4.3.2
+  flutter_dotenv: ^2.1.0
 
 
 dev_dependencies:
@@ -25,4 +26,7 @@ dev_dependencies:
   json_serializable: ^3.3.0
 
 flutter:
+  assets:
+    - assets/env/.env_dev
+    - assets/env/.env_prod
   uses-material-design: true
