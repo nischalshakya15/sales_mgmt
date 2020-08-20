@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:sales_mgmt/main_dev.dart';
+import 'package:sales_mgmt/org/personal/salemgmt/utils/env_util.dart';
 
 final Dio authenticationDio = Dio(BaseOptions(
     connectTimeout: 5000,

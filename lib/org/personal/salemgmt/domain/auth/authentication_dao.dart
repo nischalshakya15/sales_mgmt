@@ -1,11 +1,11 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
-import 'package:sales_mgmt/main_dev.dart';
 import 'package:sales_mgmt/org/personal/salemgmt/domain/auth/model/authentication_request.dart';
 import 'package:sales_mgmt/org/personal/salemgmt/domain/auth/model/authentication_response.dart';
 import 'package:sales_mgmt/org/personal/salemgmt/domain/auth/model/user.dart';
 import 'package:sales_mgmt/org/personal/salemgmt/utils/dio_utils.dart';
+import 'package:sales_mgmt/org/personal/salemgmt/utils/env_util.dart';
 
 class AuthenticationDao {
   Future<AuthenticationResponse> authenticate(
