@@ -8,19 +8,13 @@ Simple SalesManagement Flutter application using Provider (State Management), Di
 
 # Issues 
 
-|Issue     | 
-|:---------| 
-| [Missing *.g.dart](https://github.com/dart-lang/build/issues/1990) |
+|Issue     | Link       |
+|:---------| :----------|
+| Missing *.g.dart file while defining model class as JsonSerializable | [github](https://github.com/dart-lang/build/issues/1990) |
+| Jwt Authentication with flutter | [github](https://github.com/carzacc/jwt-tutorial-flutter/blob/master/lib/main.dart) <br> [carmine](https://carmine.dev/posts/flutterwebjwt/) |
+| Using interceptors in Dio Package | [medium](https://medium.com/flutter-community/dio-interceptors-in-flutter-17be4214f363) |
 
 
-* JWT authentication 
-
-https://github.com/carzacc/jwt-tutorial-flutter/blob/master/lib/main.dart
-https://carmine.dev/posts/flutterwebjwt/
-
-* Defining interceptor using Dio Package 
-
-https://medium.com/flutter-community/dio-interceptors-in-flutter-17be4214f363
 
 * Using FutureBuilder on widget
 
