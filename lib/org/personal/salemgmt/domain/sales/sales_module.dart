@@ -7,7 +7,13 @@ class SalesModule extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-        providers: [ChangeNotifierProvider.value(value: SalesProvider())],
-        child: MaterialApp(title: 'Sales Management', debugShowCheckedModeBanner: false,home: SaleUI()));
+        providers: [
+          ChangeNotifierProvider.value(value: SalesProvider()),
+          FutureProvider.value(value: SalesProvider().findAll())
+        ],
+        child: MaterialApp(
+            title: 'Sales Management',
+            debugShowCheckedModeBanner: false,
+            home: SaleUI()));
   }
 }

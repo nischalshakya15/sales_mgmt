@@ -16,8 +16,8 @@ class _SaleUiState extends State<SaleUI> {
 
   Future<List<Sales>> _findAll() async {
     try {
-      final sales = Provider.of<SalesProvider>(context, listen: true);
-      this.sales = await sales.findAll();
+      this.sales = Provider.of<List<Sales>>(context, listen: true);
+//      this.sales = await sales.findAll();
     } catch (error) {
       UiUtils.showSnackBar(
           globalKey, error.response.data['message'], Colors.red);
@@ -50,7 +50,10 @@ class _SaleUiState extends State<SaleUI> {
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => SalesForm(sale: Sales(), title: "Create new Sales", actionText: "Save")));
+                    builder: (context) => SalesForm(
+                        sale: Sales(),
+                        title: "Create new Sales",
+                        actionText: "Save")));
           },
           child: Icon(Icons.add),
           backgroundColor: Colors.lightBlue),

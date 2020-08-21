@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sales_mgmt/org/personal/salemgmt/domain/sales/model/sales.dart';
-import 'package:sales_mgmt/org/personal/salemgmt/domain/sales/repository/sales_dao.dart';
+import 'package:sales_mgmt/org/personal/salemgmt/domain/sales/repository/sales_repository.dart';
 
 class SalesProvider extends ChangeNotifier {
   final SalesDao salesDao = SalesDao();

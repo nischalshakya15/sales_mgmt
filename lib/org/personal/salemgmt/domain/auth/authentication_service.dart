@@ -1,4 +1,4 @@
-import 'package:sales_mgmt/org/personal/salemgmt/domain/auth/authentication_dao.dart';
+import 'package:sales_mgmt/org/personal/salemgmt/domain/auth/authentication_repository.dart';
 import 'package:sales_mgmt/org/personal/salemgmt/domain/auth/model/authentication_request.dart';
 import 'package:sales_mgmt/org/personal/salemgmt/domain/auth/model/authentication_response.dart';
 import 'package:sales_mgmt/org/personal/salemgmt/domain/auth/model/user.dart';
