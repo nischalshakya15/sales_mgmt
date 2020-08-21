@@ -60,3 +60,6 @@ https://medium.com/flutter-community/making-sense-all-of-those-flutter-providers
 https://medium.com/meeve/build-variants-in-flutter-for-multiple-backend-environments-7e139128949b
 https://github.com/daniellampl/flutter_env
 https://medium.com/@artem.diashkin/flutter-using-environment-variables-24a976ae1335
+
+* Using Providers
+https://codetober.com/flutter-provider-examples/

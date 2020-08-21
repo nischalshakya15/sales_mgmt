@@ -1,3 +1,4 @@
+import 'package:async/async.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sales_mgmt/org/personal/salemgmt/domain/sales/model/sales.dart';
@@ -14,15 +15,19 @@ class _SaleUiState extends State<SaleUI> {
   final globalKey = GlobalKey<ScaffoldState>();
   List<Sales> sales = List();
 
-  Future<List<Sales>> _findAll() async {
-    try {
-      this.sales = Provider.of<List<Sales>>(context, listen: true);
-//      this.sales = await sales.findAll();
-    } catch (error) {
-      UiUtils.showSnackBar(
-          globalKey, error.response.data['message'], Colors.red);
-    }
-    return this.sales;
+  final AsyncMemoizer _memoizer = AsyncMemoizer();
+
+  _fetchData() {
+    return this._memoizer.runOnce(() async {
+      try {
+        final sales = Provider.of<SalesProvider>(context, listen: true);
+        this.sales = await sales.findAll();
+      } catch (error) {
+        UiUtils.showSnackBar(
+            globalKey, error.response.data['message'], Colors.red);
+      }
+      return this.sales;
+    });
   }
 
   @override
@@ -32,7 +37,7 @@ class _SaleUiState extends State<SaleUI> {
       appBar: AppBar(title: Text('SalesManagement')),
       body: Container(
           child: FutureBuilder(
-              future: _findAll(),
+              future: _fetchData(),
               builder: (context, snapshot) {
                 if (snapshot.data == null) {
                   return Container(
