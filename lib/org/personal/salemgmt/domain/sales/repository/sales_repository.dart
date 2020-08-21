@@ -1,6 +1,4 @@
 import 'dart:convert';
-
-
 import 'package:sales_mgmt/org/personal/salemgmt/domain/sales/model/sales.dart';
 import 'package:sales_mgmt/org/personal/salemgmt/utils/dio_utils.dart';
 
@@ -18,8 +16,8 @@ class SalesDao {
   }
 
   Future<Sales> update(Sales sale) async {
-    final response =
-        await authorizationDio.put('/sales/${sale.goodsId}', data: json.encode(sale));
+    final response = await authorizationDio.put('/sales/${sale.goodsId}',
+        data: json.encode(sale));
     return Sales.fromJson(response.data);
   }
 

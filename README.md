@@ -20,3 +20,4 @@ Simple SalesManagement Flutter application using Provider (State Management), Di
 | Making sense of Providers | [Medium](https://medium.com/flutter-community/making-sense-all-of-those-flutter-providers-e842e18f45dd) <br> [Codetober](https://codetober.com/flutter-provider-examples/)|
 | Flavors or Build Variant in flutter | [Medium](https://medium.com/meeve/build-variants-in-flutter-for-multiple-backend-environments-7e139128949b) <br> [Medium](https://medium.com/@artem.diashkin/flutter-using-environment-variables-24a976ae1335) <br> [Github](https://github.com/daniellampl/flutter_env)|
 | AsyncMemoizer | [Medium](https://medium.com/saugo360/flutter-my-futurebuilder-keeps-firing-6e774830bc2)|
+| Flutter architecture provider implementation guide | [Filledstacks](https://www.filledstacks.com/post/flutter-architecture-my-provider-implementation-guide/) |

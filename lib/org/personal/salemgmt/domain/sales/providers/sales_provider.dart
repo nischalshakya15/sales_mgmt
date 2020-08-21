@@ -5,7 +5,7 @@ import 'package:sales_mgmt/org/personal/salemgmt/domain/sales/repository/sales_r
 class SalesProvider extends ChangeNotifier {
   final SalesDao salesDao = SalesDao();
 
-  List<Sales> _sales = List();
+  List<Sales> _sales;
 
   List<Sales> get getSales => _sales;
 
