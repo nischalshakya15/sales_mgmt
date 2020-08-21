@@ -2,15 +2,16 @@
 
 Simple SalesManagement Flutter application using Provider (State Management), Dio (API call), Authentication and Authorization.  
 
-# Build 
+# Build APK 
 
-**flutter build apk*
+*flutter build apk*
 
 # Issues 
 
-* Missing *.g.dart 
+|Issue     | Solution Link|
+|:---------| :------------|
+| Missing *.g.dart | https://github.com/dart-lang/build/issues/1990 |
 
-https://github.com/dart-lang/build/issues/1990
 
 * JWT authentication 
 
