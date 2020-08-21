@@ -8,9 +8,9 @@ Simple SalesManagement Flutter application using Provider (State Management), Di
 
 # Issues 
 
-|Issue     | Solution Link|
-|:---------| :------------|
-| Missing *.g.dart | https://github.com/dart-lang/build/issues/1990 |
+|Issue     | 
+|:---------| 
+| [Missing *.g.dart](https://github.com/dart-lang/build/issues/1990) |
 
 
 * JWT authentication 
